@@ -1,4 +1,4 @@
-function makesheet(name) {
+function makesheet(name,employeeID,address) {
   var name_kanji=name[0];
   var name_romaji=name[1];
   
@@ -26,8 +26,8 @@ function makesheet(name) {
       break;
   }
   }
-  
-  sheet.getRange(i,1).setValue(name_romaji);
-  sheet.getRange(i,2).setValue(ID);
+  var staff_info=[[name_romaji,ID,employeeID,address]]
+  console.log(staff_info);
+  sheet.getRange(i,1,1,4).setValues(staff_info);
   return ID;
 }
