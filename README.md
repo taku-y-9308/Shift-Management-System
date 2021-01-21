@@ -1,15 +1,18 @@
 # Shift-Management-System
-シフト管理システムの概要なんかを載せておきます。
+ここでは全体像のみ載せておきます。  
+各関数の詳細は、それぞれのREADMEをご覧ください。  
+## Shift-Manegement-System 全体像
 
-かなり読みづらい箇所もあると思います…
+![Shift-Managemant-System_全体図](https://user-images.githubusercontent.com/66234583/105381385-4afb7800-5c52-11eb-8f48-642405da8376.jpg)
 
-どんどん修正していってくれると嬉しいです。
+各シートの詳しい使い方は、以下のドキュメント参照(管理アカウントからのみ閲覧可能)
+https://docs.google.com/document/d/1yHmgzoAMu9YgsMzXhfYmYtFIJJSX8wdBdHmGM4pAMOc/edit  
 
-何かわからないことがあれば遠慮なく、下記のメアドで連絡してください!
-## 環境
+何かわからないことがあれば遠慮なく、下記のメアドで連絡してください!  
+## Development Environment
 
-* Google Apps Script
+* Google Apps Script  
 
-## 文責
-* 山中拓己
-* y.takumi4@gmail.com
+## Responsibility
+* 山中拓己  
+* y.takumi4@gmail.com  
