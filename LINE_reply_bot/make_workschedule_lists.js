@@ -9,7 +9,7 @@ function make_workschedule_list() {
   var ss_pm_list= SpreadsheetApp.openById("1_I6rQOsNnkqZ3Ck9CM7c9TIxpQiLskvD26nE__kEQYA");
   var sheet_pm_list= ss_pm_list.getSheets()[0];
   /*指定された範囲をクリア*/
-  sheet_ws_list.getRange("A2:G50").clear();
+  //sheet_ws_list.getRange("A2:G50").clear();
   /*ステータスを更新*/
   sheet_ws_list.getRange("I2").setValue(1);
   var ws_lastRow=sheet_ws_list.getLastRow();

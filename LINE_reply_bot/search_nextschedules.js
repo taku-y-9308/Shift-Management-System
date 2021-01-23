@@ -3,10 +3,10 @@
 /*ID_kinmu[0]:今月の勤務表,ID_kinmu[1]:来月の勤務表*/
 function search_nextschedule(name,ID_kinmu){
   var nextschedule={
-    date_1:"",
+    date_1:"0",
     intime_1:"0:00",
     outtime_1:"0:00",
-    date_2:"",
+    date_2:"0",
     intime_2:"0:00",
     outtime_2:"0:00"
   };
@@ -73,6 +73,9 @@ function search_nextschedule(name,ID_kinmu){
       break;
     }
   }
+  
+  return nextschedule;
+  /*
   if(status==0){
     nextschedule.date_1=0;
     return nextschedule;
@@ -84,5 +87,6 @@ function search_nextschedule(name,ID_kinmu){
   else if(status==2){
     return nextschedule;
   }
+  */
   
 }

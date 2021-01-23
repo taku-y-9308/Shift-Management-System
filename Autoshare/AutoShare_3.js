@@ -4,7 +4,7 @@ function AutoShare_3() {
   try{
     if(check_employeeID(employeeID)==0){
       var name=getname();
-      var ID=makesheet(name);
+      var ID=makesheet(name,employeeID,address);
       var ss = SpreadsheetApp.openById(ID);//取得したIDから、スプレッドシート を開く
       ss.addEditor(address);
       mailSend_OK(address,ID);

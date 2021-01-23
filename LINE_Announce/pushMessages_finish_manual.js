@@ -1,8 +1,8 @@
-/*シフト表提出期限終了*/
+/*シフト表提出期限終了,手動で実行された場合*/
 var CHANNEL_ACCESS_TOKEN = PropertiesService.getScriptProperties().getProperty('channel_access_token'); 
-var USER_ID = PropertiesService.getScriptProperties().getProperty('groupID_mucheshift');
+var USER_ID = "U2ae2b0bddee9723e6733a70d4244e1f6";//PropertiesService.getScriptProperties().getProperty('groupID_mucheshift');
 
-function pushMessage_finish() {
+function pushMessage_finish_manual() {
     //deleteTrigger();
   var postData = {
     "to": USER_ID,
@@ -11,8 +11,8 @@ function pushMessage_finish() {
       "text":  "【シフト表提出期限終了】\n\n"
                +"------------------------------\n\n"
                +"お疲れ様です。\n"
-               +"シフト表の提出は22時で締め切りです。\n\n"
-               +"なお、このメッセージ以降はシステムにより、自動で締め切られて反映されなくなるので、これ以降の変更は須田さんに連絡してください。",
+               +"シフト表の提出は締め切られました。\n\n"
+               +"なお、このメッセージ以降はシステムにより締め切られ、自動では反映されなくなるので、これ以降の変更は須田さんに連絡してください。",
     }]
   };
 

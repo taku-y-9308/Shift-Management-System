@@ -5,7 +5,7 @@ function check_employeeID(employeeID) {
   var employeeID_list=[];
   employeeID_list=sheet.getRange(2,3,lastRow-1,1).getValues();
   for(var i=0;i<employeeID_list.length;i++){
-    if(employeeID_list[i]==employeeID){
+    if(employeeID_list[i][0]==employeeID){
       return 1; 
     }
   

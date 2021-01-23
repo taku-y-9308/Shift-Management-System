@@ -5,14 +5,7 @@ function messageController(prop, events, replyToken,user_id) {
   const text = message.text;
   /*現在のステータスコードを代入*/
   var status_code=status_code_now();
-  var nextschedule={
-    date_1:"",
-    intime_1:"",
-    outtime_1:"",
-    date_2:"",
-    intime_2:"",
-    outtime_2:""
-  };
+  var nextschedule={};
   /*– 条件文 ———————–*/
   if (text.indexOf('time') > -1) {
     /* LINEのメッセージ形式にする */
@@ -89,20 +82,28 @@ function messageController(prop, events, replyToken,user_id) {
           'text': "お疲れ様です。"+"\n"+"向こう10日間でシフトに入っている日はありません。"
         }];
       }
-      else if(nextschedule.date_1==2){
+      else if(nextschedule.status==1&&nextschedule.date_1!=""&&nextschedule.date_2==0){
         var LineMessageObject = [{
           'type': 'text',
-          'text': "お疲れ様です。"+"\n"+"リストを更新しています。2,3分ほどお待ちください。"
+          'text': "お疲れ様です。"+"\n"+"リストを更新していますので、1時間ほど前の情報になります。\n\n"
+                   +"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+"です。"+"よろしくお願いします。"
         }];
       }
-      else if(nextschedule.date_1!=""&&nextschedule.date_2==0){
+      else if(nextschedule.status==1&&nextschedule.date_1!=""&&nextschedule.date_2!=""){
+        var LineMessageObject = [{
+          'type': 'text',
+          'text': "お疲れ様です。"+"\n"+"リストを更新していますので、1時間ほど前の情報になります。\n\n"
+                   +"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+nextschedule.date_2+" "+nextschedule.intime_2+"〜"+nextschedule.outtime_2+"\n"+"です。\n"+"よろしくお願いします。"
+        }];
+      }
+      else if(nextschedule.status==0&&nextschedule.date_1!=""&&nextschedule.date_2==0){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+"です。"+"よろしくお願いします。"
         }];
       }
       
-      else if(nextschedule.date_1!=""&&nextschedule.date_2!=""){
+      else if(nextschedule.status==0&&nextschedule.date_1!=""&&nextschedule.date_2!=""){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+nextschedule.date_2+" "+nextschedule.intime_2+"〜"+nextschedule.outtime_2+"\n"+"です。\n"+"よろしくお願いします。"
