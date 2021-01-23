@@ -13,7 +13,7 @@ https://docs.google.com/document/d/1yHmgzoAMu9YgsMzXhfYmYtFIJJSX8wdBdHmGM4pAMOc/
 
 ## 開発環境  
 
-このシステムはGoogle Apps Scriptで書かれていますが、 開発はローカル環境で行うようにしてください。  
+このシステムはGoogle Apps Scriptで書かれていますが、 開発はローカル環境で行った方がいいかもしれません。  
 Chromeの拡張機能であるGithubアシスタントもありますが、ちょっと使いづらいので…  
 Google Apps Scriptをローカル環境で開発する方法については、以下のサイトがとても参考になります。  
 
