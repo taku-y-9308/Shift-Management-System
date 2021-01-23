@@ -17,8 +17,8 @@ function share_worksheet() {
   var ID_kibou=templateFile_1.makeCopy(OutputFileName_1, OutputFolder).getId();
   var ID_kinmu=templateFile_2.makeCopy(OutputFileName_2, OutputFolder).getId();
   console.log(ID_kinmu,ID_kibou);
-  //date_A1(ID_kinmu);
-  //date_tab(ID_kinmu);
+  date_A1(ID_kinmu);
+  date_tab(ID_kinmu);
   //date_kibou(ID_kibou);
   put_ID(ID_kinmu);
   copy_value_kibou(template_kibou_ID,ID_kibou);
