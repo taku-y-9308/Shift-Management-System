@@ -23,7 +23,7 @@ function search_nextschedule_fromlist(name) {
       nextschedule[2].date=workschedule_list_date[i][4];
       nextschedule[2].intime=Utilities.formatDate(workschedule_list_date[i][5],'Asia/Tokyo', 'HH:mm');
       nextschedule[2].outtime=Utilities.formatDate(workschedule_list_date[i][6],'Asia/Tokyo', 'HH:mm');
-      console.log(nextschedule);
+      //console.log(nextschedule);
       return  nextschedule;
     }
   }
