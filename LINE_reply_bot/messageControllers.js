@@ -5,7 +5,7 @@ function messageController(prop, events, replyToken,user_id) {
   const text = message.text;
   /*現在のステータスコードを代入*/
   var status_code=status_code_now();
-  var nextschedule={};
+  var nextschedule=[];
   /*– 条件文 ———————–*/
   if (text.indexOf('time') > -1) {
     /* LINEのメッセージ形式にする */
@@ -73,43 +73,51 @@ function messageController(prop, events, replyToken,user_id) {
     else {
       nextschedule=search_nextschedule_fromlist(name);
       
-      if(nextschedule.date_1==1){
+      if(nextschedule[1].date==1){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"ただいまリストに追加中です。最大で１時間ほど経ってからお試しください。"
         }];
       }
-      else if(nextschedule.date_1==""){
+      else if(nextschedule[1].date==null){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"向こう10日間でシフトに入っている日はありません。"
         }];
       }
-      else if(nextschedule.status==1&&nextschedule.date_1!=""&&nextschedule.date_2==""){
+      else if(nextschedule[0].status==1&&nextschedule[1].date!=null&&nextschedule[1].date==null){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"リストを更新していますので、1時間ほど前の情報になります。\n\n"
-                   +"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+"です。"+"よろしくお願いします。"
+                   +"次回のシフトは"+"\n"+nextschedule[1].date+" "+nextschedule[1].intime+"〜"+nextschedule[1].outtime+"\n"+"です。"+"よろしくお願いします。"
         }];
       }
-      else if(nextschedule.status==1&&nextschedule.date_1!=""&&nextschedule.date_2!=""){
+      else if(nextschedule[0].status==1&&nextschedule[1].date!=null&&nextschedule[2].date!=null){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"リストを更新していますので、1時間ほど前の情報になります。\n\n"
-                   +"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+nextschedule.date_2+" "+nextschedule.intime_2+"〜"+nextschedule.outtime_2+"\n"+"です。\n"+"よろしくお願いします。"
+                   +"次回のシフトは"+"\n"+nextschedule[1].date+" "+nextschedule[1].intime+"〜"+nextschedule[1].outtime+"\n"
+                   +nextschedule[2].date+" "+nextschedule[2].intime+"〜"+nextschedule[2].outtime+"\n"
+                   +"です。\n"
+                   +"よろしくお願いします。"
         }];
       }
-      else if(nextschedule.status==0&&nextschedule.date_1!=""&&nextschedule.date_2==""){
+      else if(nextschedule[0].status==0&&nextschedule[1].date!=null&&nextschedule[2].date==null){
         var LineMessageObject = [{
           'type': 'text',
-          'text': "お疲れ様です。"+"\n"+"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+"です。"+"よろしくお願いします。"
+          'text': "お疲れ様です。"+"\n"+"次回のシフトは\n"
+                  +nextschedule[1].date+" "+nextschedule[1].intime+"〜"+nextschedule[1].outtime+"\n"
+                  +"です。"+"よろしくお願いします。"
         }];
       }
       
-      else if(nextschedule.status==0&&nextschedule.date_1!=""&&nextschedule.date_2!=""){
+      else if(nextschedule[0].status==0&&nextschedule[1].date!=null&&nextschedule[2].date!=null){
         var LineMessageObject = [{
           'type': 'text',
-          'text': "お疲れ様です。"+"\n"+"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+nextschedule.date_2+" "+nextschedule.intime_2+"〜"+nextschedule.outtime_2+"\n"+"です。\n"+"よろしくお願いします。"
+          'text': "お疲れ様です。"+"\n"+"次回のシフトは"+"\n"
+                  +nextschedule[1].date+" "+nextschedule[1].intime+"〜"+nextschedule[1].outtime+"\n"
+                  +nextschedule[2].date+" "+nextschedule[2].intime+"〜"+nextschedule[2].outtime+"\n"
+                  +"です。\n"+"よろしくお願いします。"
         }];
       }
       
