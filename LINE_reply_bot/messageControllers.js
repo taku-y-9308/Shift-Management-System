@@ -27,16 +27,19 @@ function messageController(prop, events, replyToken,user_id) {
       'text': "OK!"+"\n"+"苗字だけ入力してください。（ただし、同性の人がいる場合はスペースなしで名前まで）"+"\n"+"もし、間違えてシフト通知と言った場合は、必ず’キャンセル'と言ってください。"
     }];
   }
-  /*リストに登録する*/
+
+  /*リストに登録する**************************************************/
   else if (text.indexOf('はい') > -1&&status_code==1){
-    var cal_text=call_text();
-    register_list(cal_text,user_id); 
-    push_newaccount(cal_text);
+    var cal_text=call_text();//新規登録者の名前を呼び出す
+    register_list(cal_text,user_id);//Pushmessage_listに追加する 
+    push_newaccount(cal_text);//開発者に新規登録者をPUSHする
+    
     var LineMessageObject = [{
       'type': 'text',
-      'text':cal_text+"さん"+"\n"+"登録完了しました！"+"\n"+"次回から16時から17時の間に、シフト通知がされるようになります。"
+      'text':cal_text+"さん"+"\n"+"登録完了しました！\n"+"次回から16時から17時の間に、シフト通知がされるようになります。"
       
     }];
+    make_workschedule_list();//登録された時点で、workschedule_listを更新する
     status_code_store(0);
   }
   else if (text.indexOf('キャンセル') > -1){
@@ -118,7 +121,7 @@ function messageController(prop, events, replyToken,user_id) {
       store_text(text);
       var LineMessageObject = [{
         'type': 'text',
-        'text':text+"さんですね？"+"\n"+"これで登録する場合は'はい'"+"\n"+"訂正する場合は、もう一度名前を入力してください。"
+        'text':text+"さんですね？"+"\n"+"これで登録する場合は'はい'"+"\n"+"訂正する場合は、もう一度名前を入力してください。\n\n"+"なお、登録には最大で10秒ほどかかります。"
       }];
     }
     else if(status_code==2){
