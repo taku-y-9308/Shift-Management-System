@@ -63,6 +63,9 @@ function make_workschedule_list() {
 
   }
   console.log(WorkscheduleList);
+  /*指定された範囲をクリア*/
+  sheet_ws_list.getRange("A2:G50").clear();
+
   sheet_ws_list.getRange(2,1,ws_lastRow-1,7).setValues(WorkscheduleList);
   /*ステータスを更新*/
   const update_date=Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss');
