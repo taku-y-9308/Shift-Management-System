@@ -76,13 +76,13 @@ function messageController(prop, events, replyToken,user_id) {
           'text': "お疲れ様です。"+"\n"+"ただいまリストに追加中です。最大で１時間ほど経ってからお試しください。"
         }];
       }
-      else if(nextschedule.date_1==0){
+      else if(nextschedule.date_1==""){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"向こう10日間でシフトに入っている日はありません。"
         }];
       }
-      else if(nextschedule.status==1&&nextschedule.date_1!=""&&nextschedule.date_2==0){
+      else if(nextschedule.status==1&&nextschedule.date_1!=""&&nextschedule.date_2==""){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"リストを更新していますので、1時間ほど前の情報になります。\n\n"
@@ -96,7 +96,7 @@ function messageController(prop, events, replyToken,user_id) {
                    +"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+nextschedule.date_2+" "+nextschedule.intime_2+"〜"+nextschedule.outtime_2+"\n"+"です。\n"+"よろしくお願いします。"
         }];
       }
-      else if(nextschedule.status==0&&nextschedule.date_1!=""&&nextschedule.date_2==0){
+      else if(nextschedule.status==0&&nextschedule.date_1!=""&&nextschedule.date_2==""){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"次回のシフトは"+"\n"+nextschedule.date_1+" "+nextschedule.intime_1+"〜"+nextschedule.outtime_1+"\n"+"です。"+"よろしくお願いします。"
