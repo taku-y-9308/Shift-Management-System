@@ -1,7 +1,7 @@
 function search_nextschedule_fromlist(name) {
-  var nextschedule=[{},{},{}];
-  var ss_ws_list= SpreadsheetApp.openById("1bgIR84gNNCHmRd_9BVhN7tNo19ve2HaPYcHRd0Uj__g");//workschedule_listを開く
-  var sheet_ws_list= ss_ws_list.getSheets()[0];
+  const nextschedule=[{},{},{}];
+  const ss_ws_list= SpreadsheetApp.openById("1bgIR84gNNCHmRd_9BVhN7tNo19ve2HaPYcHRd0Uj__g");//workschedule_listを開く
+  const sheet_ws_list= ss_ws_list.getSheets()[0];
   const LastRow=sheet_ws_list.getLastRow()
   const status=sheet_ws_list.getRange("I2").getValue();//1：更新中,0:通常
   //sheet_ws_list.getRange("F1").setValue(name);
