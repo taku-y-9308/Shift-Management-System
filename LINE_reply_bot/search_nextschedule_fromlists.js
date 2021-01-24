@@ -1,45 +1,37 @@
-//var name="山中";
 function search_nextschedule_fromlist(name) {
-  var nextschedule={
-    status:"",
-    date_1:"",
-    intime_1:"",
-    outtime_1:"",
-    date_2:"",
-    intime_2:"",
-    outtime_2:""
-  };
+  var nextschedule=[{},{},{}];
   var ss_ws_list= SpreadsheetApp.openById("1bgIR84gNNCHmRd_9BVhN7tNo19ve2HaPYcHRd0Uj__g");//workschedule_listを開く
   var sheet_ws_list= ss_ws_list.getSheets()[0];
-  var LastRow=sheet_ws_list.getLastRow()
-  var status=sheet_ws_list.getRange("I2").getValue();//1：更新中,0:通常
+  const LastRow=sheet_ws_list.getLastRow()
+  const status=sheet_ws_list.getRange("I2").getValue();//1：更新中,0:通常
   //sheet_ws_list.getRange("F1").setValue(name);
   
   /*リスト更新中*/
   if(status==1){
-    nextschedule.status=1;
-    //return nextschedule;
+    nextschedule[0].status="1";
   }
   
-  
-  for(var i=2;i<=LastRow;i++){
-    //sheet_ws_list.getRange(i,6).setValue(sheet_ws_list.getRange(i,1).getValue());
-    if(sheet_ws_list.getRange(i,1).getValue()==name){
-      nextschedule.date_1=sheet_ws_list.getRange(i,2).getValue();
-      nextschedule.intime_1=Utilities.formatDate(sheet_ws_list.getRange(i,3).getValue(),'Asia/Tokyo', 'HH:mm');
-      nextschedule.outtime_1=Utilities.formatDate(sheet_ws_list.getRange(i,4).getValue(),'Asia/Tokyo', 'HH:mm');
-      nextschedule.date_2=sheet_ws_list.getRange(i,5).getValue();
-      nextschedule.intime_2=Utilities.formatDate(sheet_ws_list.getRange(i,6).getValue(),'Asia/Tokyo', 'HH:mm');
-      nextschedule.outtime_2=Utilities.formatDate(sheet_ws_list.getRange(i,7).getValue(),'Asia/Tokyo', 'HH:mm');
-      return  nextschedule;
+  /* workschedule_list の名前、日付、時間が格納されている*/
+  const workschedule_list_date=sheet_ws_list.getRange(2,1,LastRow-1,7).getValues();
+
+  for(var i=0;i<workschedule_list_date.length;i++){
+    if(workschedule_list_date[i][0]==name){
+      nextschedule[0].status="0"
+      nextschedule[1].date=workschedule_list_date[i][1];
+      nextschedule[1].intime=Utilities.formatDate(workschedule_list_date[i][2],'Asia/Tokyo', 'HH:mm');
+      nextschedule[1].outtime=Utilities.formatDate(workschedule_list_date[i][3],'Asia/Tokyo', 'HH:mm');
+      nextschedule[2].date=workschedule_list_date[i][4];
+      nextschedule[2].intime=Utilities.formatDate(workschedule_list_date[i][5],'Asia/Tokyo', 'HH:mm');
+      nextschedule[2].outtime=Utilities.formatDate(workschedule_list_date[i][6],'Asia/Tokyo', 'HH:mm');
       console.log(nextschedule);
+      return  nextschedule;
     }
   }
-  
+
   /*リストに追加されていない時*/
-  if(i==LastRow+1&&status==0){
-    nextschedule.date_1=1;
+    nextschedule[0].status="3"
+    nextschedule[0].date=1;
+    console.log("リストに追加されていません");
     return nextschedule;
-  }
   
 }
