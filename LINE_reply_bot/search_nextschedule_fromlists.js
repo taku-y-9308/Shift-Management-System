@@ -8,7 +8,7 @@ function search_nextschedule_fromlist(name) {
   
   /*リスト更新中*/
   if(status==1){
-    nextschedule[0].status="1";
+    nextschedule[0].status=1;
   }
   
   /* workschedule_list の名前、日付、時間が格納されている*/
@@ -16,7 +16,7 @@ function search_nextschedule_fromlist(name) {
 
   for(var i=0;i<workschedule_list_date.length;i++){
     if(workschedule_list_date[i][0]==name){
-      nextschedule[0].status="0"
+      nextschedule[0].status=0
       if(workschedule_list_date[i][1]!=""){
         nextschedule[1].date=workschedule_list_date[i][1];
         nextschedule[1].intime=Utilities.formatDate(workschedule_list_date[i][2],'Asia/Tokyo', 'HH:mm');
@@ -42,7 +42,7 @@ function search_nextschedule_fromlist(name) {
   }
 
   /*リストに追加されていない時*/
-    nextschedule[0].status="3"
+    nextschedule[0].status=3
     nextschedule[0].date=1;
     console.log("リストに追加されていません");
     return nextschedule;

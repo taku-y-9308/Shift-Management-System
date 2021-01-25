@@ -64,16 +64,22 @@ function messageController(prop, events, replyToken,user_id) {
   }
   else if (text.indexOf('次のシフト') > -1){
     var name=search_name(user_id);
+
+    /*登録者リストに名前が登録されていなかった場合***************************/
     if(name==1) {
       var LineMessageObject = [{
         'type': 'text',
         'text': "エラー"+"\n"+"登録者リストに名前がありませんでした。"+"まず、'シフト通知'とメッセージを送って名前を登録してください。"
       }];
     }
+
+    /*登録者リストに名前が登録されている場合*********************************/
     else {
+      
+      /*workscheduleListからシフトを探索する　ただし、statusが含まれたnextscheduleを返す*/
       nextschedule=search_nextschedule_fromlist(name);
       
-      if(nextschedule[1].date==1){
+      if(nextschedule[0].status==3){
         var LineMessageObject = [{
           'type': 'text',
           'text': "お疲れ様です。"+"\n"+"ただいまリストに追加中です。最大で１時間ほど経ってからお試しください。"
