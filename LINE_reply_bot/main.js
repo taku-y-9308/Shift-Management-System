@@ -14,6 +14,11 @@ function doPost(e) {
   var sheet=ss.getSheetByName('receive_log');
   sheet.getRange(sheet.getLastRow()+1,1).setValue(new Date());
   sheet.getRange(sheet.getLastRow(),2).setValue(json.events);
+  /*
+  var send_log=[[]];
+  var timestamp=json.events.timestamp;
+  var userId=json.events.
+  */
   
   /* イベントへの応答に使用するトークンを取得 */
   const replyToken = responseLineJson.replyToken;
